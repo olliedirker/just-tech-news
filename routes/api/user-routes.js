@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+//Get /api/users/1
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+//post api users
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+//delete
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
