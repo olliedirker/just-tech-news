@@ -67,7 +67,7 @@ router.get("/post/:id", (req, res) => {
         sequelize.literal(
           "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
         ),
-        "vote_count"
+        "vote_count",
       ],
     ],
     include: [
@@ -95,7 +95,10 @@ router.get("/post/:id", (req, res) => {
       const post = dbPostData.get({ plain: true });
 
       //pass data to template
-      res.render("single-post", { post });
+      res.render("single-post", {
+        post,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
