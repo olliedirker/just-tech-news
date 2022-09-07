@@ -4,18 +4,19 @@ async function upvoteClickHandler(event) {
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  const response = await fetch ('/api/posts/upvote',{
-    method: 'PUT',
+  const response = await fetch("/api/posts/upvote", {
+    method: "PUT",
     body: JSON.stringify({
-        post_id: id
+      post_id: id,
     }),
     headers: {
-        'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json",
+    },
   });
-  if(response.ok){
+
+  if (response.ok) {
     document.location.reload();
-  }else{
+  } else {
     alert(response.statusText);
   }
 }
